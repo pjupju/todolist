@@ -37,8 +37,8 @@ function displayMessages() {
   todoList.forEach(function (item, i) {
     displayMessage += `
         <li>
-          <input type='checkbox' id='item_${i}' ${item.checked ? "checked" : ''}>
-          <label for='item_${i}' class="${item.important ? 'important' : ''}">${item.todo}</label>
+          <input type='checkbox' id='item_${i}' ${item.checked ? "checked" : ''} >
+          <label for='item_${i}' class="${item.important ? 'important' : ''}" > ${item.todo}</label>
         </li>
         `;
     todo.innerHTML = displayMessage;
@@ -68,11 +68,11 @@ todo.addEventListener('change', function (event) {
 
 //отлючил клик правой кнопкой мыши по задаче (стандартного меню при нажатии правой кнопкной мыши в браузере)
 //addEventListener('contextmenu') - обозначаю событие
-todo.addEventListener('contextmenu', function (event) {
+todo.addEventListener('contextmenu', function (event){
   event.preventDefault(); //метод, который отменяет стандартное поведение браузера
   todoList.forEach(function (item, i) {
     if (item.todo === event.target.innerHTML) {
-      if(event.ctrlKey || event.metaKey){ //удаление задач с помощью зажатой правой кнопки мыши + кнопки
+      if(event.ctrlKey || event.metaKey){ //удаление задач с помощью зажатой правой кнопки мыши + кнопки для винды и мака
         todoList.splice(i, 1);  // сколько удалить элементов из массива
       } else {
         item.important = !item.important;
